@@ -1,0 +1,37 @@
+
+.navbar {
+  background-color:#bccf00;
+}
+header{
+background-color: grey;
+box-sizing:border-box;
+display:inlnie-block;
+padding:10px 15px;
+width:100%;
+}
+.logo,.menu{
+display:inline-block;
+font-size:0;
+vertical-align:middle;
+}
+.logo{
+text-align:left;
+width:30%;
+}
+.logo img{
+max-width:100%;
+}
+.menu{
+text-align:right;
+width:70%;
+}
+.menu ul li{
+display:inline-block;
+font-size:0;
+vertical-align:middle;
+}
+.menu ul li a{
+font-size:14px;
+line-height:18px;
+text-decoration:none;
+}

@@ -1,0 +1,87 @@
+---
+title: "Segurança Pública"
+runtime: shiny
+output:
+  flexdashboard::flex_dashboard:
+    logo: image/logo_CDnaEP_[VersaoHORIZONTAL-COR].png
+    css: style.css
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+# Library
+library(shiny)
+library(flexdashboard)
+library(dplyr)
+library(tidyverse)
+library(tidyr)
+library(readr)  
+library(magrittr)
+library(echarts4r)
+
+all_data <- read_csv("data/all_data.csv", 
+                     col_types = cols(aisp = col_character()), 
+                     locale = locale(encoding = "ISO-8859-1"))
+
+all_data %<>% transform(mes = month.abb[mes])
+all_data %<>% filter(ano < 2020)
+
+AISP = c('AISP 01','AISP 02','AISP 03','AISP 04',
+              'AISP 05','AISP 06','AISP 07','AISP 08',
+              'AISP 09','AISP 10','AISP 11','AISP 12',
+              'AISP 13','AISP 14','AISP 15','AISP 16')
+
+AISP_2 <- c(AISP[6],  AISP[7],  AISP[9],  AISP[12],
+  AISP[14],  AISP[15],  AISP[16],  AISP[1],  AISP[2],
+  AISP[3],  AISP[4],  AISP[5],  AISP[8],  AISP[10],
+  AISP[11],  AISP[13])
+
+
+Prop_AISP <- c(rep(AISP_2,72))
+all_data %<>% arrange(ano) %>%
+             arrange(mes) %>%
+             mutate(Prop_AISP)
+
+```
+
+Column {data-width=550}
+-----------------------------------------------------------------------
+
+
+
+
+### Chart A
+
+```{r}
+
+  all_data %>% group_by(date) %>% summarise(total = sum(homicidios)) %>%
+  e_chart(date) %>% e_bar(total)
+
+```
+
+
+Column {data-width=450}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r, echo=FALSE}
+selectInput("ANO", label = "Ano:",
+            choices = all_data$ano, selected = all_data$ano[1])
+```
+
+```{r,eval=TRUE, echo=FALSE}
+json <- jsonlite::read_json('data/aispmap.geojson')
+
+mes_data_aisp <- all_data %>% filter(ano %in% c(input$ANO)) %>% filter(mes %in% c("Jan")) 
+row.names(mes_data_aisp) <- AISP_2
+mes_data_aisp %>% 
+  dplyr::mutate(states = row.names(.)) %>%
+  e_charts(states) %>%
+  e_map_register("ssp", json) %>%
+  e_map(roubo_veiculos, map = "ssp") %>%
+  e_visual_map(roubo_veiculos)
+
+
+```

@@ -1,0 +1,13 @@
+name: ssp_indicadores
+title: ssp_indicadores
+username:
+account: robsonpessoa
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4373269
+bundleId: 4807754
+url: https://robsonpessoa.shinyapps.io/ssp_indicadores/
+when: 1625986290.38304
+lastSyncTime: 1625986290.38307
+asMultiple: FALSE
+asStatic: FALSE

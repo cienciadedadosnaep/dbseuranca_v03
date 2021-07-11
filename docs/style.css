@@ -1,0 +1,27 @@
+
+.navbar {
+  background-color:#bccf00;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+    background-color: yellow;
+    color: black;
+}
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover{
+  color: white;
+  background-color: #fed26e;
+}
+.navbar-inverse .navbar-nav > .active > a:focus {
+  color: white;
+  background-color: yellow;
+}
+.navbar-inverse .navbar-toggle:hover{
+  background-color: purple;
+}
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+  border-color: pink;
+}
+

@@ -34,13 +34,14 @@ all_data %<>% arrange(ano) %>%
 
 all_data_ori <- all_data
 
-ui <- fluidPage(sidebarPanel(titlePanel(title=div(img(src="CDnaEP_[VersaoHORIZONTAL-COR]_30dpi.png"))),tags$p('O projeto Ciência de Dados na Escola Pública tem selecionados dados 
- disponibilidados de forma aberta e os transformado em materiais de 
- mais fácil acesso aos estudantes para atividades escolares 
+ui <- fluidPage(sidebarPanel(titlePanel(title=div(img(src="CDnaEP_[VersaoHORIZONTAL-COR]_30dpi.png"))),
+tags$p('O projeto Ciência de Dados na Escola Pública tem selecionado dados 
+ disponibilizados de forma aberta e os transformado em materiais de 
+ mais fácil acesso aos estudantes para atividades escolares, 
  que os aproximem de forma mais profunda da cidade que vivemos. 
- Especialmente neste dashboard apresentamos dados de indicadores de 
- segurança pública para a cidade de Salvados, bem como as informações
- das áreas integradas de segurança pública AISP')),
+ Especialmente neste dashboard, apresentamos dados de indicadores de 
+ segurança pública para a cidade de Salvador, bem como as informações
+ das Áreas Integradas de Segurança Pública AISP')),
     mainPanel(
     tags$h3(''),
     tags$p('Fonte: Secretaria de Segurança Pública da Bahia'),
